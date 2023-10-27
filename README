@@ -1,0 +1,32 @@
+## Description
+
+Simple API backend
+stack: Node, OOP, Typescript, TypeORM, PostgreSQL
+Copyright Alexander Verba 2023
+
+## Installation and run
+
+1. Setup Postgresql, create user and database (see system/development.sh file)
+2. install modules / dependencies using "$ npm install" in the project root
+3. run database migrations "$ npm run mirun"
+4. start API server on port specificed in the package.json using "$ npm run dev"
+
+## Test running of the API using curl tool
+
+# get list of all users with number of articles assigned
+$ curl -X GET "http://127.0.0.1:5521/users"
+
+# get list of articles
+$ curl -X GET "http://127.0.0.1:5521/articles"
+
+# create new article
+$ curl -X POST -H 'Content-Type: application/json' -d '{"title":"Some new article 4","content":"brand new text here...","imageUrl":"http://127.0.0.1/someimage4.png"}' "http://127.0.0.1:5521/articles"
+
+# edit article by article ID: 1797d9c6-e5c8-43d8-9c82-ed4057bfc2c0
+$ curl -X PUT -H 'Content-Type: application/json' -d '{"title":"Article 4","content":"brand new text here...","imageUrl":"http://127.0.0.1/someimage4.png"}' "http://127.0.0.1:5521/articles/1797d9c6-e5c8-43d8-9c82-ed4057bfc2c0"
+
+# get article by article ID: 1797d9c6-e5c8-43d8-9c82-ed4057bfc2c0
+$ curl -X GET "http://127.0.0.1:5521/articles/1797d9c6-e5c8-43d8-9c82-ed4057bfc2c0"
+
+# remove article with article ID: 1797d9c6-e5c8-43d8-9c82-ed4057bfc2c0
+$ curl -X DELETE "http://127.0.0.1:5521/articles/1797d9c6-e5c8-43d8-9c82-ed4057bfc2c0"
